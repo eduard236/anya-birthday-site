@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Атака Титанов – 26 лет Ане</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="particles-container" id="particlesContainer"></div>
+
+    <div class="container">
+        <div class="main-title"><span>⚔️ 26-я ЭКСПЕДИЦИЯ ⚔️</span></div>
+
+        <div class="progress-indicator">
+            <span class="step" id="step1">1</span>
+            <span class="step" id="step2">2</span>
+            <span class="step" id="step3">3</span>
+            <span class="step" id="step4">4</span>
+            <span class="step" id="step5">5</span>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="tab1">🧠 Викторина</button>
+            <button class="tab-btn" data-tab="tab2">🔑 Найди ключ</button>
+            <button class="tab-btn" data-tab="tab3">🏃 Поймай титана</button>
+            <button class="tab-btn" data-tab="tab4">🤔 Угадай героя</button>
+            <button class="tab-btn" data-tab="tab5">🔐 Собери код</button>
+        </div>
+
+        <div class="tab-content">
+            <!-- Вкладка 1: Викторина -->
+            <div id="tab1" class="tab-pane active">
+                <div class="quest-title">📜 Испытание знанием</div>
+                <div class="quest-desc">Ответь на 8 вопросов и получи первое слово!</div>
+                <div class="quiz-progress">
+                    <span>Вопрос <span id="qNum">1</span> из 8</span>
+                    <div class="progress-bar"><div class="progress-fill" id="quizProgressFill"></div></div>
+                    <span class="progress-text" id="quizProgressText">0%</span>
+                </div>
+                <div id="quizContainer">
+                    <div id="questionText"></div>
+                    <div id="optionsContainer"></div>
+                    <div id="quizFeedback" class="feedback"></div>
+                </div>
+                <div id="quizFinal" class="final-congrats" style="display:none;">
+                    <h2>🎉 Поздравляем, Аня!</h2>
+                    <div class="age">26</div>
+                    <div class="sub">Ты получила первое слово:</div>
+                    <div class="word-reveal" id="word1">СВОБОДА</div>
+                    <div style="margin-top:15px; font-size:1rem; color:#b8ad96;">Запомни его для финального этапа!</div>
+                    <div class="candles" id="candles1"></div>
+                </div>
+            </div>
+
+            <!-- Вкладка 2: Найди ключ (30 предметов) -->
+            <div id="tab2" class="tab-pane">
+                <div class="quest-title">🔍 Найди заветный ключ</div>
+                <div class="quest-desc">Среди 30 предметов спрятан ключ. Кликай на предметы – каждый неверный выбор даст подсказку. Будь внимательна!</div>
+                <div class="items-grid" id="itemsGrid"></div>
+                <div id="keyFeedback" class="feedback"></div>
+                <div id="keyFinal" class="final-congrats" style="display:none;">
+                    <h2>🗝️ Ключ найден!</h2>
+                    <div class="age">26</div>
+                    <div class="sub">Ты получила второе слово:</div>
+                    <div class="word-reveal" id="word2">КЛЮЧ</div>
+                    <div style="margin-top:15px; font-size:1rem; color:#b8ad96;">Запомни его для финального этапа!</div>
+                    <div class="candles" id="candles2"></div>
+                </div>
+            </div>
+
+            <!-- Вкладка 3: Поймай титана -->
+            <div id="tab3" class="tab-pane">
+                <div class="quest-title">⚡ Поймай титана за 30 секунд</div>
+                <div class="quest-desc">Кликни по титану 26 раз за 30 секунд и получи третье слово!</div>
+                <div class="titan-game">
+                    <div class="game-stats">
+                        <span>⏱️ <span id="timerDisplay">30</span>с</span>
+                        <span>🎯 <span id="hitCount">0</span>/26</span>
+                    </div>
+                    <div class="titan-area" id="titanArea">
+                        <div class="titan" id="titan"></div>
+                    </div>
+                    <button class="btn" id="startGameBtn">Начать охоту</button>
+                    <div id="gameFeedback" class="feedback"></div>
+                    <div id="gameFinal" class="final-congrats" style="display:none;">
+                        <h2>🏆 ТИТАН ПОВЕРЖЕН!</h2>
+                        <div class="age">26</div>
+                        <div class="sub">Ты получила третье слово:</div>
+                        <div class="word-reveal" id="word3">ПОБЕДА</div>
+                        <div style="margin-top:15px; font-size:1rem; color:#b8ad96;">Запомни его для финального этапа!</div>
+                        <div class="candles" id="candles3"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Вкладка 4: Угадай героя -->
+            <div id="tab4" class="tab-pane">
+                <div class="quest-title">🤔 Угадай героя</div>
+                <div class="quest-desc">Прочитай описание и выбери правильного персонажа. Получи четвёртое слово!</div>
+                <div class="quiz-progress">
+                    <span>Вопрос <span id="heroQNum">1</span> из 5</span>
+                    <div class="progress-bar"><div class="progress-fill" id="heroProgressFill"></div></div>
+                    <span class="progress-text" id="heroProgressText">0%</span>
+                </div>
+                <div id="heroContainer">
+                    <div id="heroQuestionText"></div>
+                    <div id="heroOptionsContainer"></div>
+                    <div id="heroFeedback" class="feedback"></div>
+                </div>
+                <div id="heroFinal" class="final-congrats" style="display:none;">
+                    <h2>🌟 Ты знаешь героев!</h2>
+                    <div class="age">26</div>
+                    <div class="sub">Ты получила четвёртое слово:</div>
+                    <div class="word-reveal" id="word4">СЕРДЦЕ</div>
+                    <div style="margin-top:15px; font-size:1rem; color:#b8ad96;">Запомни его для финального этапа!</div>
+                    <div class="candles" id="candles4"></div>
+                </div>
+            </div>
+
+            <!-- Вкладка 5: Собери код (4 слова) -->
+            <div id="tab5" class="tab-pane">
+                <div class="quest-title">🔐 Собери секретный код</div>
+                <div class="quest-desc">
+                    Введи четыре слова, которые ты получила в предыдущих квестах, в правильном порядке.
+                    <br><strong>Подсказка:</strong> порядок соответствует квестам (1→2→3→4).
+                </div>
+                <div class="code-inputs">
+                    <input type="text" id="codeWord1" placeholder="Слово 1" class="code-input" maxlength="20">
+                    <input type="text" id="codeWord2" placeholder="Слово 2" class="code-input" maxlength="20">
+                    <input type="text" id="codeWord3" placeholder="Слово 3" class="code-input" maxlength="20">
+                    <input type="text" id="codeWord4" placeholder="Слово 4" class="code-input" maxlength="20">
+                </div>
+                <button class="btn" id="checkCodeBtn">Проверить код</button>
+                <div id="codeFeedback" class="feedback"></div>
+                <div id="finalBig" style="display:none;" class="final-congrats">
+                    <h2>🎂 С ДНЁМ РОЖДЕНИЯ, АНЯ!</h2>
+                    <div class="age">26</div>
+                    <div class="sub">Ты собрала все слова и открыла главный подарок – нашу любовь! ❤️</div>
+                    <div style="margin-top:20px; font-size:1.4rem; color:#f0d080; line-height:1.8;">
+                        Сегодня твой день – 26 лет! Пусть каждый миг будет наполнен счастьем, 
+                        улыбками и теплом. Ты – настоящий титан, сильная, смелая и прекрасная. 
+                        Пусть твоя жизнь будет похожа на захватывающее приключение, полное ярких 
+                        побед и незабываемых моментов. Я люблю тебя больше всех стен на свете! 
+                        С днём рождения, моя героиня! 🎉🎊
+                    </div>
+                    <div class="candles" id="candlesFinal"></div>
+                    <canvas id="confettiCanvas"></canvas>
+                    <button class="btn" onclick="location.reload()" style="margin-top:20px;">Пройти заново</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
